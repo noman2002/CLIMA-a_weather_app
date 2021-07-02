@@ -24,15 +24,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void getLocation() async {
     Location location = Location();
     await location.getCurrentLocation();
-    longitude=location.longitude;
-    latitude=location.latitude;
+    longitude = location.longitude;
+    latitude = location.latitude;
 
     getData();
   }
 
   void getData() async {
     http.Response response = await http.get(Uri.parse(
-        'api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey'));
+        'http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey'));
 
     if (response.statusCode == 200) {
       String data = response.body;
@@ -41,6 +41,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
       double temperature = decodedData['main']['temp'];
       int condition = decodedData['weather'][0]['id'];
       String cityName = decodedData['name'];
+
+      print(temperature);
+      print(condition);
+      print(cityName);
     } else {
       print(response.statusCode);
     }
@@ -48,7 +52,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold();
   }
 }
