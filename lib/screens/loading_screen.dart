@@ -1,3 +1,4 @@
+import 'package:clima/services/location.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -14,15 +15,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getLocation() async {
-    try {
-      Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.low);
-      print(position);
-    } catch (e) {
-      print(e);
-    }
+  try {
+    Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.low);
+    print(position);
+  } catch (e) {
+    print(e);
   }
+}
 
   @override
   Widget build(BuildContext context) {
