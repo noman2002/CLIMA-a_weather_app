@@ -14,10 +14,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getLocation() async {
-    Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
+
+    try{
+      Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.low);
     print(position);
+    }
+    catch(e){
+      
+    }
   }
 
   @override
