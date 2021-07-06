@@ -1,3 +1,4 @@
+import 'package:clima/screens/location_screen.dart';
 import 'package:clima/services/location.dart';
 import 'package:clima/services/networking.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     var weatherdata = await networkHelper.getData();
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return LoadingScreen();
+      return LocationScreen();
     }));
   }
 
