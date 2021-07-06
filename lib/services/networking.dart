@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 
 class NetworkHelper {
   NetworkHelper(this.url);
-  
 
   final String url;
 
