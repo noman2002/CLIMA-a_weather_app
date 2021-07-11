@@ -21,20 +21,22 @@ class _LoadingScreenState extends State<LoadingScreen> {
     getLocationData();
   }
 
-  void getLocationData() async {
+  Future<void> getLocationData() async {
     Location location = Location();
     await location.getCurrentLocation();
     longitude = location.longitude;
     latitude = location.latitude;
     NetworkHelper networkHelper = NetworkHelper(
-        'http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey');
+        'http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric');
 
-    var weatherdata = await networkHelper.getData();
+    var weatherData = await networkHelper.getData();
+   
+   
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return LocationScreen(
-        locationWeather: weatherdata,
-      );
+          locationWeather: weatherData,
+          );
     }));
   }
 
