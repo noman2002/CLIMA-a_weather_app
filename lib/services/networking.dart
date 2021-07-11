@@ -6,7 +6,7 @@ class NetworkHelper {
 
   final String url;
 
-  Future<void> getData() async {
+  Future getData() async {
     http.Response response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
@@ -18,3 +18,8 @@ class NetworkHelper {
     }
   }
 }
+
+
+
+
+
